@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FileUpload {
+  id            String    @id @default(cuid())
+  original_name         String    
+  stored_name      String
+  size          Int
+  mime_type  String
+  share_token  String @unique
+  expires_at  DateTime?
+  upload_date     DateTime  @default(now())
+  download_count     Int  @default(0)
+
+}
+
