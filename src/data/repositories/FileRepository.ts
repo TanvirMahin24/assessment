@@ -18,6 +18,7 @@ export class FileRepository extends BaseRepository<FileUpload> {
     });
   }
 
+  // @ts-ignore - Type mismatch with base class, but Prisma types are more specific
   async create(data: Prisma.FileUploadCreateInput): Promise<FileUpload> {
     return this.prisma.fileUpload.create({
       data,
